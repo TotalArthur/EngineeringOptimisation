@@ -1,0 +1,112 @@
+
+==== optimisation / sqp : V = 3018.1739 cm^3, first-order optimality 2.22e-16 ====
+  gear bending stress                      418.18 MPa        650  margin   35.665 %  inactive  lam=0
+  gear contact stress                      683.26 MPa        800  margin   14.592 %  inactive  lam=0
+  shaft 1 combined stress                     550 MPa        550  margin   -0.000 %  ACTIVE  lam=0.3089
+  shaft 2 combined stress                  545.38 MPa        550  margin    0.840 %  inactive  lam=0
+  shaft 1 deflection                     0.023679 mm      0.075  margin   68.428 %  inactive  lam=0
+  shaft 2 deflection                    0.0055497 mm      0.075  margin   92.600 %  inactive  lam=0
+  shaft 1 min length (1.5 d1 + 1.9)        7.0654 cm        7.3  margin    3.214 %  inactive  lam=0
+  shaft 2 min length (1.1 d2 + 1.9)           7.4 cm        7.4  margin   -0.000 %  ACTIVE  lam=0.1433
+  b/m lower limit                               5 -          5  margin    0.000 %  ACTIVE  lam=1.163
+  b/m upper limit                               5 -         12  margin   58.333 %  inactive  lam=0
+  overall size m z (1+u)                    49.98 cm        160  margin   68.762 %  inactive  lam=0
+  b     3.50000 cm  [2.6, 4.4] free lam=0
+  m     7.00000 mm  [7, 8] lower lam=0.7213
+  z    17.00000 -   [17, 28] lower lam=2.097
+  l1    7.30000 cm  [7.3, 8.3] lower lam=0.01403
+  l2    7.40000 cm  [7.3, 8.3] free lam=0
+  d1    3.44361 cm  [2.8, 3.9] free lam=0
+  d2    5.00000 cm  [5, 5.5] lower lam=0.2939
+  eig H_L: [-6.41440e-01 -1.28120e-01 -2.70000e-04  5.70000e-04  5.68600e-02
+  5.66940e-01  2.10544e+00]
+  eig reduced H (dim 0): []
+  all original constraints satisfied: True
+
+==== optimisation / interior-point : V = 3018.1755 cm^3, first-order optimality 4.44e-16 ====
+  gear bending stress                      418.18 MPa        650  margin   35.665 %  inactive  lam=0
+  gear contact stress                      683.26 MPa        800  margin   14.592 %  inactive  lam=0
+  shaft 1 combined stress                     550 MPa        550  margin    0.000 %  ACTIVE  lam=0.3089
+  shaft 2 combined stress                  545.38 MPa        550  margin    0.840 %  inactive  lam=0
+  shaft 1 deflection                     0.023679 mm      0.075  margin   68.427 %  inactive  lam=0
+  shaft 2 deflection                    0.0055497 mm      0.075  margin   92.600 %  inactive  lam=0
+  shaft 1 min length (1.5 d1 + 1.9)        7.0654 cm        7.3  margin    3.214 %  inactive  lam=0
+  shaft 2 min length (1.1 d2 + 1.9)           7.4 cm        7.4  margin    0.000 %  ACTIVE  lam=0.1433
+  b/m lower limit                               5 -          5  margin    0.000 %  ACTIVE  lam=1.163
+  b/m upper limit                               5 -         12  margin   58.333 %  inactive  lam=0
+  overall size m z (1+u)                    49.98 cm        160  margin   68.762 %  inactive  lam=0
+  b     3.50000 cm  [2.6, 4.4] free lam=0
+  m     7.00000 mm  [7, 8] lower lam=0.7213
+  z    17.00000 -   [17, 28] lower lam=2.097
+  l1    7.30002 cm  [7.3, 8.3] lower lam=0.01403
+  l2    7.40003 cm  [7.3, 8.3] free lam=0
+  d1    3.44361 cm  [2.8, 3.9] free lam=0
+  d2    5.00000 cm  [5, 5.5] lower lam=0.2939
+  eig H_L: [-6.41440e-01 -1.28120e-01 -2.70000e-04  5.70000e-04  5.68600e-02
+  5.66940e-01  2.10544e+00]
+  eig reduced H (dim 0): []
+  all original constraints satisfied: True
+
+==== reference / sqp : V = 2697.1540 cm^3, first-order optimality 2.22e-16 ====
+  gear bending stress                      174.24 MPa        650  margin   73.194 %  inactive  lam=0
+  gear contact stress                      444.53 MPa        800  margin   44.434 %  inactive  lam=0
+  shaft 1 combined stress                   426.3 MPa        550  margin   22.491 %  inactive  lam=0
+  shaft 2 combined stress                  213.22 MPa        550  margin   61.233 %  inactive  lam=0
+  shaft 1 deflection                     0.022572 mm      0.075  margin   69.903 %  inactive  lam=0
+  shaft 2 deflection                    0.0023124 mm      0.075  margin   96.917 %  inactive  lam=0
+  shaft 1 min length (1.5 d1 + 1.9)           6.1 cm        7.3  margin   16.438 %  inactive  lam=0
+  shaft 2 min length (1.1 d2 + 1.9)           7.4 cm        7.4  margin   -0.000 %  ACTIVE  lam=0.1433
+  b/m lower limit                               5 -          5  margin   -0.000 %  ACTIVE  lam=1.046
+  b/m upper limit                               5 -         12  margin   58.333 %  inactive  lam=0
+  overall size m z (1+u)                     47.6 cm        160  margin   70.250 %  inactive  lam=0
+  b     3.50000 cm  [2.6, 4.4] free lam=0
+  m     7.00000 mm  [7, 8] lower lam=0.653
+  z    17.00000 -   [17, 28] lower lam=1.9
+  l1    7.30000 cm  [7.3, 8.3] lower lam=0.006158
+  l2    7.40000 cm  [7.3, 8.3] free lam=0
+  d1    2.80000 cm  [2.8, 3.9] lower lam=0.1963
+  d2    5.00000 cm  [5, 5.5] lower lam=0.2939
+  eig H_L: [-5.86710e-01 -1.16420e-01 -2.70000e-04 -1.50000e-04  5.68800e-02
+  1.53560e-01  1.85365e+00]
+  eig reduced H (dim 0): []
+  all original constraints satisfied: True
+
+==== reference / interior-point : V = 2697.1559 cm^3, first-order optimality 2.22e-16 ====
+  gear bending stress                      174.24 MPa        650  margin   73.194 %  inactive  lam=0
+  gear contact stress                      444.53 MPa        800  margin   44.434 %  inactive  lam=0
+  shaft 1 combined stress                   426.3 MPa        550  margin   22.490 %  inactive  lam=0
+  shaft 2 combined stress                  213.22 MPa        550  margin   61.233 %  inactive  lam=0
+  shaft 1 deflection                     0.022573 mm      0.075  margin   69.902 %  inactive  lam=0
+  shaft 2 deflection                    0.0023124 mm      0.075  margin   96.917 %  inactive  lam=0
+  shaft 1 min length (1.5 d1 + 1.9)           6.1 cm     7.3001  margin   16.439 %  inactive  lam=0
+  shaft 2 min length (1.1 d2 + 1.9)           7.4 cm        7.4  margin    0.000 %  ACTIVE  lam=0.1433
+  b/m lower limit                               5 -          5  margin    0.000 %  ACTIVE  lam=1.046
+  b/m upper limit                               5 -         12  margin   58.333 %  inactive  lam=0
+  overall size m z (1+u)                     47.6 cm        160  margin   70.250 %  inactive  lam=0
+  b     3.50000 cm  [2.6, 4.4] free lam=0
+  m     7.00000 mm  [7, 8] lower lam=0.653
+  z    17.00000 -   [17, 28] lower lam=1.9
+  l1    7.30009 cm  [7.3, 8.3] lower lam=0.006158
+  l2    7.40000 cm  [7.3, 8.3] free lam=0
+  d1    2.80000 cm  [2.8, 3.9] lower lam=0.1963
+  d2    5.00000 cm  [5, 5.5] lower lam=0.2939
+  eig H_L: [-5.86710e-01 -1.16420e-01 -2.70000e-04 -1.50000e-04  5.68800e-02
+  1.53560e-01  1.85365e+00]
+  eig reduced H (dim 0): []
+  all original constraints satisfied: True
+
+Convexity (midpoint test, 5000 segments)
+  objective                    violations  1727 (34.5 %)  worst rel gap 0.0463
+  gear bending stress          violations     0 (0.0 %)  worst rel gap 0
+  gear contact stress          violations     0 (0.0 %)  worst rel gap 0
+  shaft 1 combined stress      violations     2 (0.0 %)  worst rel gap 8.28e-05
+  shaft 2 combined stress      violations     1 (0.0 %)  worst rel gap 1.3e-05
+  shaft 1 deflection           violations    46 (0.9 %)  worst rel gap 0.00108
+  shaft 2 deflection           violations    83 (1.7 %)  worst rel gap 0.000137
+  shaft 1 min length           violations     0 (0.0 %)  worst rel gap 4.49e-14
+  shaft 2 min length           violations     0 (0.0 %)  worst rel gap 1.52e-13
+  b/m lower limit              violations     0 (0.0 %)  worst rel gap 4.19e-14
+  b/m upper limit              violations     0 (0.0 %)  worst rel gap 6.21e-16
+  overall size                 violations  2552 (51.0 %)  worst rel gap 0.0114
+
+sensitivity to cp reading: {'cp_form': 'one_plus_nu2', 'f': 3018.1738895494054, 'x': [np.float64(3.499999999999999), np.float64(7.000000000000001), np.float64(17.00000000000001), np.float64(7.300000000000004), np.float64(7.400000000000002), np.float64(3.443605441445939), np.float64(5.0)], 'feasible': True, 'sigma_c_MPa': 624.3034794093671}

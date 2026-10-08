@@ -1,0 +1,13 @@
+function,n_violations,n_segments,fraction,worst_relative_gap
+objective,1727,5000,0.3454,0.04630327582496643
+gear bending stress,0,5000,0.0,0.0
+gear contact stress,0,5000,0.0,0.0
+shaft 1 combined stress,2,5000,0.0004,8.283673385963841e-05
+shaft 2 combined stress,1,5000,0.0002,1.301073321641198e-05
+shaft 1 deflection,46,5000,0.0092,0.0010762781734371851
+shaft 2 deflection,83,5000,0.0166,0.0001374769288109206
+shaft 1 min length,0,5000,0.0,4.4882449316961965e-14
+shaft 2 min length,0,5000,0.0,1.519622263714975e-13
+b/m lower limit,0,5000,0.0,4.1860278478907514e-14
+b/m upper limit,0,5000,0.0,6.2107263960226005e-16
+overall size,2552,5000,0.5104,0.011353111334608562

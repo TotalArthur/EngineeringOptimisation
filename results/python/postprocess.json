@@ -1,0 +1,979 @@
+{
+  "results": [
+    {
+      "label": "optimisation",
+      "method": "sqp",
+      "x": [
+        3.5000000000000338,
+        7.000000000000001,
+        17.000000000000014,
+        7.300000000000001,
+        7.399999999999995,
+        3.443605441444892,
+        5.000000000000001
+      ],
+      "V_cm3": 3018.1738895491403,
+      "constraints": [
+        {
+          "name": "gear bending stress",
+          "value": 418.1787000514447,
+          "limit": 650.0,
+          "unit": "MPa",
+          "g": -0.3566481537670081,
+          "margin_pct": 35.664815376700815,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "gear contact stress",
+          "value": 683.263636710978,
+          "limit": 800.0,
+          "unit": "MPa",
+          "g": -0.14592045411127763,
+          "margin_pct": 14.592045411127756,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 combined stress",
+          "value": 550.0000000005015,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": 9.119371924271036e-13,
+          "margin_pct": -9.117684385273606e-11,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.3089294991316881
+        },
+        {
+          "name": "shaft 2 combined stress",
+          "value": 545.3788353004041,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.008402117635628703,
+          "margin_pct": 0.8402117635628822,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 deflection",
+          "value": 0.023679263099944062,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.6842764920007458,
+          "margin_pct": 68.4276492000746,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 deflection",
+          "value": 0.0055496843969157356,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.9260042080411235,
+          "margin_pct": 92.60042080411236,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 min length (1.5 d1 + 1.9)",
+          "value": 7.065408162167339,
+          "limit": 7.300000000000001,
+          "unit": "cm",
+          "g": -0.0321358681962551,
+          "margin_pct": 3.213586819625505,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 min length (1.1 d2 + 1.9)",
+          "value": 7.400000000000002,
+          "limit": 7.399999999999995,
+          "unit": "cm",
+          "g": 7.604267291953128e-16,
+          "margin_pct": -9.601928861622982e-14,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.14333516482003417
+        },
+        {
+          "name": "b/m lower limit",
+          "value": 5.0,
+          "limit": 5.000000000000047,
+          "unit": "-",
+          "g": -1.2810265668751805e-14,
+          "margin_pct": 9.414691248821239e-13,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 1.1625224239640592
+        },
+        {
+          "name": "b/m upper limit",
+          "value": 5.000000000000047,
+          "limit": 12.0,
+          "unit": "-",
+          "g": -1.8846153846153721,
+          "margin_pct": 58.333333333332945,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "overall size m z (1+u)",
+          "value": 49.980000000000054,
+          "limit": 160.0,
+          "unit": "cm",
+          "g": -0.6876249999999997,
+          "margin_pct": 68.76249999999996,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        }
+      ],
+      "all_original_constraints_satisfied": true,
+      "bounds": [
+        {
+          "name": "b",
+          "unit": "cm",
+          "value": 3.5000000000000338,
+          "lb": 2.6,
+          "ub": 4.4,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "m",
+          "unit": "mm",
+          "value": 7.000000000000001,
+          "lb": 7.0,
+          "ub": 8.0,
+          "status": "lower",
+          "multiplier_scaled": 0.7213482749641885
+        },
+        {
+          "name": "z",
+          "unit": "-",
+          "value": 17.000000000000014,
+          "lb": 17.0,
+          "ub": 28.0,
+          "status": "lower",
+          "multiplier_scaled": 2.0974726333550824
+        },
+        {
+          "name": "l1",
+          "unit": "cm",
+          "value": 7.300000000000001,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "lower",
+          "multiplier_scaled": 0.014030356902636522
+        },
+        {
+          "name": "l2",
+          "unit": "cm",
+          "value": 7.399999999999995,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d1",
+          "unit": "cm",
+          "value": 3.443605441444892,
+          "lb": 2.8,
+          "ub": 3.9,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d2",
+          "unit": "cm",
+          "value": 5.000000000000001,
+          "lb": 5.0,
+          "ub": 5.5,
+          "status": "lower",
+          "multiplier_scaled": 0.29385672283515507
+        }
+      ],
+      "first_order_optimality": 2.220446049250313e-16,
+      "n_active_constraints": 3,
+      "n_active_bounds": 4,
+      "eig_hessian_lagrangian": [
+        -0.6414360881069211,
+        -0.12811947090386916,
+        -0.00027098274585334595,
+        0.000571007694780616,
+        0.05686165640074574,
+        0.566938178946798,
+        2.1054382024430294
+      ],
+      "eig_reduced_hessian": [],
+      "null_space_dim": 0,
+      "lagrangian_scaling_note": "objective scaled by 1000 cm^3, variables scaled to [0,1]"
+    },
+    {
+      "label": "optimisation",
+      "method": "interior-point",
+      "x": [
+        3.500000414546545,
+        7.000000185993247,
+        17.00000096444225,
+        7.300018856329818,
+        7.400026405268366,
+        3.443605948699872,
+        5.000000604436671
+      ],
+      "V_cm3": 3018.1755270414906,
+      "constraints": [
+        {
+          "name": "gear bending stress",
+          "value": 418.17860457512165,
+          "limit": 650.0,
+          "unit": "MPa",
+          "g": -0.35664830065365904,
+          "margin_pct": 35.6648300653659,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "gear contact stress",
+          "value": 683.2635393300071,
+          "limit": 800.0,
+          "unit": "MPa",
+          "g": -0.14592057583749118,
+          "margin_pct": 14.59205758374911,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 combined stress",
+          "value": 549.9999101889263,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -1.6329286145477795e-07,
+          "margin_pct": 1.6329286133689244e-05,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.30892979770471546
+        },
+        {
+          "name": "shaft 2 combined stress",
+          "value": 545.3786611395881,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.00840243429165799,
+          "margin_pct": 0.8402434291658044,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 deflection",
+          "value": 0.023679430670405885,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.6842742577279215,
+          "margin_pct": 68.42742577279216,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 deflection",
+          "value": 0.005549740659722448,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.9260034578703673,
+          "margin_pct": 92.60034578703673,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 min length (1.5 d1 + 1.9)",
+          "value": 7.065408923049807,
+          "limit": 7.300018856329818,
+          "unit": "cm",
+          "g": -0.03213834702465887,
+          "margin_pct": 3.2138264009630877,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 min length (1.1 d2 + 1.9)",
+          "value": 7.40000066488034,
+          "limit": 7.400026405268366,
+          "unit": "cm",
+          "g": -3.5260805515900227e-06,
+          "margin_pct": 0.0003478418402407259,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.1433351994748484
+        },
+        {
+          "name": "b/m lower limit",
+          "value": 5.0,
+          "limit": 5.000000459357019,
+          "unit": "-",
+          "g": -1.2367304696362466e-07,
+          "margin_pct": 9.18713953774796e-06,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 1.162522594087518
+        },
+        {
+          "name": "b/m upper limit",
+          "value": 5.000000459357019,
+          "limit": 12.0,
+          "unit": "-",
+          "g": -1.8846153110174424,
+          "margin_pct": 58.33332950535817,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "overall size m z (1+u)",
+          "value": 49.98000416345207,
+          "limit": 160.0,
+          "unit": "cm",
+          "g": -0.6876249739784246,
+          "margin_pct": 68.76249739784245,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        }
+      ],
+      "all_original_constraints_satisfied": true,
+      "bounds": [
+        {
+          "name": "b",
+          "unit": "cm",
+          "value": 3.500000414546545,
+          "lb": 2.6,
+          "ub": 4.4,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "m",
+          "unit": "mm",
+          "value": 7.000000185993247,
+          "lb": 7.0,
+          "ub": 8.0,
+          "status": "lower",
+          "multiplier_scaled": 0.7213484080080789
+        },
+        {
+          "name": "z",
+          "unit": "-",
+          "value": 17.00000096444225,
+          "lb": 17.0,
+          "ub": 28.0,
+          "status": "lower",
+          "multiplier_scaled": 2.097472988541394
+        },
+        {
+          "name": "l1",
+          "unit": "cm",
+          "value": 7.300018856329818,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "lower",
+          "multiplier_scaled": 0.014030372204443942
+        },
+        {
+          "name": "l2",
+          "unit": "cm",
+          "value": 7.400026405268366,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d1",
+          "unit": "cm",
+          "value": 3.443605948699872,
+          "lb": 2.8,
+          "ub": 3.9,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d2",
+          "unit": "cm",
+          "value": 5.000000604436671,
+          "lb": 5.0,
+          "ub": 5.5,
+          "status": "lower",
+          "multiplier_scaled": 0.2938568941271106
+        }
+      ],
+      "first_order_optimality": 4.440892098500626e-16,
+      "n_active_constraints": 3,
+      "n_active_bounds": 4,
+      "eig_hessian_lagrangian": [
+        -0.6414360888769913,
+        -0.12811949148918375,
+        -0.00027098273071186934,
+        0.0005710074722660196,
+        0.05686167323930005,
+        0.5669384344951477,
+        2.1054386645243137
+      ],
+      "eig_reduced_hessian": [],
+      "null_space_dim": 0,
+      "lagrangian_scaling_note": "objective scaled by 1000 cm^3, variables scaled to [0,1]"
+    },
+    {
+      "label": "reference",
+      "method": "sqp",
+      "x": [
+        3.4999999999999987,
+        7.0,
+        17.0,
+        7.3,
+        7.399999999999997,
+        2.8,
+        5.0
+      ],
+      "V_cm3": 2697.154033216616,
+      "constraints": [
+        {
+          "name": "gear bending stress",
+          "value": 174.24112502143717,
+          "limit": 650.0,
+          "unit": "MPa",
+          "g": -0.7319367307362505,
+          "margin_pct": 73.19367307362506,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "gear contact stress",
+          "value": 444.5313552728849,
+          "limit": 800.0,
+          "unit": "MPa",
+          "g": -0.4443358059088939,
+          "margin_pct": 44.433580590889385,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 combined stress",
+          "value": 426.3021372370827,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.224905205023486,
+          "margin_pct": 22.4905205023486,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 combined stress",
+          "value": 213.22097077440782,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.6123255076828948,
+          "margin_pct": 61.232550768289485,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 deflection",
+          "value": 0.022572432215152774,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.6990342371312963,
+          "margin_pct": 69.90342371312963,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 deflection",
+          "value": 0.0023123684987148944,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.9691684200171348,
+          "margin_pct": 96.91684200171348,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 min length (1.5 d1 + 1.9)",
+          "value": 6.1,
+          "limit": 7.3,
+          "unit": "cm",
+          "g": -0.16438356164383558,
+          "margin_pct": 16.438356164383563,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 min length (1.1 d2 + 1.9)",
+          "value": 7.4,
+          "limit": 7.399999999999997,
+          "unit": "cm",
+          "g": 5.703200468964846e-16,
+          "margin_pct": -4.80096443081149e-14,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.1433351648200344
+        },
+        {
+          "name": "b/m lower limit",
+          "value": 5.0,
+          "limit": 4.999999999999998,
+          "unit": "-",
+          "g": 5.337610695313252e-16,
+          "margin_pct": -3.552713678800502e-14,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 1.0460518751876864
+        },
+        {
+          "name": "b/m upper limit",
+          "value": 4.999999999999998,
+          "limit": 12.0,
+          "unit": "-",
+          "g": -1.884615384615385,
+          "margin_pct": 58.33333333333335,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "overall size m z (1+u)",
+          "value": 47.6,
+          "limit": 160.0,
+          "unit": "cm",
+          "g": -0.7025,
+          "margin_pct": 70.25,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        }
+      ],
+      "all_original_constraints_satisfied": true,
+      "bounds": [
+        {
+          "name": "b",
+          "unit": "cm",
+          "value": 3.4999999999999987,
+          "lb": 2.6,
+          "ub": 4.4,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "m",
+          "unit": "mm",
+          "value": 7.0,
+          "lb": 7.0,
+          "ub": 8.0,
+          "status": "lower",
+          "multiplier_scaled": 0.653013019771501
+        },
+        {
+          "name": "z",
+          "unit": "-",
+          "value": 17.0,
+          "lb": 17.0,
+          "ub": 28.0,
+          "status": "lower",
+          "multiplier_scaled": 1.9004677294797498
+        },
+        {
+          "name": "l1",
+          "unit": "cm",
+          "value": 7.3,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "lower",
+          "multiplier_scaled": 0.006157521601035998
+        },
+        {
+          "name": "l2",
+          "unit": "cm",
+          "value": 7.399999999999997,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d1",
+          "unit": "cm",
+          "value": 2.8,
+          "lb": 2.8,
+          "ub": 3.9,
+          "status": "lower",
+          "multiplier_scaled": 0.19625076917633322
+        },
+        {
+          "name": "d2",
+          "unit": "cm",
+          "value": 5.0,
+          "lb": 5.0,
+          "ub": 5.5,
+          "status": "lower",
+          "multiplier_scaled": 0.29385672283515524
+        }
+      ],
+      "first_order_optimality": 2.220446049250313e-16,
+      "n_active_constraints": 2,
+      "n_active_bounds": 5,
+      "eig_hessian_lagrangian": [
+        -0.5867092232041511,
+        -0.11641704429137127,
+        -0.0002708289805645227,
+        -0.00015224079699357633,
+        0.05687869945416633,
+        0.1535590705852407,
+        1.8536465641334825
+      ],
+      "eig_reduced_hessian": [],
+      "null_space_dim": 0,
+      "lagrangian_scaling_note": "objective scaled by 1000 cm^3, variables scaled to [0,1]"
+    },
+    {
+      "label": "reference",
+      "method": "interior-point",
+      "x": [
+        3.5000003854029673,
+        7.0000005339147835,
+        17.000003211828332,
+        7.300088531883642,
+        7.400001557088404,
+        2.8000007659150836,
+        5.000000410455125
+      ],
+      "V_cm3": 2697.1559291532476,
+      "constraints": [
+        {
+          "name": "gear bending stress",
+          "value": 174.24104633533665,
+          "limit": 650.0,
+          "unit": "MPa",
+          "g": -0.7319368517917897,
+          "margin_pct": 73.19368517917897,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "gear contact stress",
+          "value": 444.5312129063347,
+          "limit": 800.0,
+          "unit": "MPa",
+          "g": -0.4443359838670816,
+          "margin_pct": 44.43359838670816,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 combined stress",
+          "value": 426.3023510447781,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.2249048162822216,
+          "margin_pct": 22.49048162822216,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 combined stress",
+          "value": 213.2209180988873,
+          "limit": 550.0,
+          "unit": "MPa",
+          "g": -0.6123256034565685,
+          "margin_pct": 61.23256034565686,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 deflection",
+          "value": 0.02257322279178693,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.6990236961095075,
+          "margin_pct": 69.90236961095076,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 deflection",
+          "value": 0.002312368585852587,
+          "limit": 0.075,
+          "unit": "mm",
+          "g": -0.9691684188552988,
+          "margin_pct": 96.91684188552989,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 1 min length (1.5 d1 + 1.9)",
+          "value": 6.100001148872625,
+          "limit": 7.300088531883642,
+          "unit": "cm",
+          "g": -0.16439553191931722,
+          "margin_pct": 16.439353821115347,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "shaft 2 min length (1.1 d2 + 1.9)",
+          "value": 7.400000451500638,
+          "limit": 7.400001557088404,
+          "unit": "cm",
+          "g": -1.5145037906431693e-07,
+          "margin_pct": 1.4940372075554363e-05,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 0.14333518835309647
+        },
+        {
+          "name": "b/m lower limit",
+          "value": 5.0,
+          "limit": 5.000000169207952,
+          "unit": "-",
+          "g": -4.55559906037833e-08,
+          "margin_pct": 3.384158918478833e-06,
+          "active": true,
+          "satisfied": true,
+          "multiplier": 1.0460524337087254
+        },
+        {
+          "name": "b/m upper limit",
+          "value": 5.000000169207952,
+          "limit": 12.0,
+          "unit": "-",
+          "g": -1.884615482805682,
+          "margin_pct": 58.333331923267075,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        },
+        {
+          "name": "overall size m z (1+u)",
+          "value": 47.60001262374055,
+          "limit": 160.0,
+          "unit": "cm",
+          "g": -0.7024999211016216,
+          "margin_pct": 70.24999211016215,
+          "active": false,
+          "satisfied": true,
+          "multiplier": 0.0
+        }
+      ],
+      "all_original_constraints_satisfied": true,
+      "bounds": [
+        {
+          "name": "b",
+          "unit": "cm",
+          "value": 3.5000003854029673,
+          "lb": 2.6,
+          "ub": 4.4,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "m",
+          "unit": "mm",
+          "value": 7.0000005339147835,
+          "lb": 7.0,
+          "ub": 8.0,
+          "status": "lower",
+          "multiplier_scaled": 0.6530133699438463
+        },
+        {
+          "name": "z",
+          "unit": "-",
+          "value": 17.000003211828332,
+          "lb": 17.0,
+          "ub": 28.0,
+          "status": "lower",
+          "multiplier_scaled": 1.9004685459154147
+        },
+        {
+          "name": "l1",
+          "unit": "cm",
+          "value": 7.300088531883642,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "lower",
+          "multiplier_scaled": 0.006157524969706951
+        },
+        {
+          "name": "l2",
+          "unit": "cm",
+          "value": 7.400001557088404,
+          "lb": 7.3,
+          "ub": 8.3,
+          "status": "free",
+          "multiplier_scaled": 0.0
+        },
+        {
+          "name": "d1",
+          "unit": "cm",
+          "value": 2.8000007659150836,
+          "lb": 2.8,
+          "ub": 3.9,
+          "status": "lower",
+          "multiplier_scaled": 0.19625130051607703
+        },
+        {
+          "name": "d2",
+          "unit": "cm",
+          "value": 5.000000410455125,
+          "lb": 5.0,
+          "ub": 5.5,
+          "status": "lower",
+          "multiplier_scaled": 0.2938567740707464
+        }
+      ],
+      "first_order_optimality": 2.220446049250313e-16,
+      "n_active_constraints": 2,
+      "n_active_bounds": 5,
+      "eig_hessian_lagrangian": [
+        -0.586709424507313,
+        -0.11641709552474402,
+        -0.00027082900238156374,
+        -0.00015224067423324117,
+        0.056878704376228155,
+        0.15355927883747594,
+        1.8536471319580814
+      ],
+      "eig_reduced_hessian": [],
+      "null_space_dim": 0,
+      "lagrangian_scaling_note": "objective scaled by 1000 cm^3, variables scaled to [0,1]"
+    }
+  ],
+  "convexity": [
+    {
+      "function": "objective",
+      "n_violations": 1727,
+      "n_segments": 5000,
+      "frac": 0.3454,
+      "worst_rel_gap": 0.04630327582496643
+    },
+    {
+      "function": "gear bending stress",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 0.0
+    },
+    {
+      "function": "gear contact stress",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 0.0
+    },
+    {
+      "function": "shaft 1 combined stress",
+      "n_violations": 2,
+      "n_segments": 5000,
+      "frac": 0.0004,
+      "worst_rel_gap": 8.283673385963841e-05
+    },
+    {
+      "function": "shaft 2 combined stress",
+      "n_violations": 1,
+      "n_segments": 5000,
+      "frac": 0.0002,
+      "worst_rel_gap": 1.301073321641198e-05
+    },
+    {
+      "function": "shaft 1 deflection",
+      "n_violations": 46,
+      "n_segments": 5000,
+      "frac": 0.0092,
+      "worst_rel_gap": 0.0010762781734371851
+    },
+    {
+      "function": "shaft 2 deflection",
+      "n_violations": 83,
+      "n_segments": 5000,
+      "frac": 0.0166,
+      "worst_rel_gap": 0.0001374769288109206
+    },
+    {
+      "function": "shaft 1 min length",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 4.4882449316961965e-14
+    },
+    {
+      "function": "shaft 2 min length",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 1.519622263714975e-13
+    },
+    {
+      "function": "b/m lower limit",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 4.1860278478907514e-14
+    },
+    {
+      "function": "b/m upper limit",
+      "n_violations": 0,
+      "n_segments": 5000,
+      "frac": 0.0,
+      "worst_rel_gap": 6.2107263960226005e-16
+    },
+    {
+      "function": "overall size",
+      "n_violations": 2552,
+      "n_segments": 5000,
+      "frac": 0.5104,
+      "worst_rel_gap": 0.011353111334608562
+    }
+  ],
+  "cp_sensitivity": {
+    "cp_form": "one_plus_nu2",
+    "f": 3018.1738895494054,
+    "x": [
+      3.499999999999999,
+      7.000000000000001,
+      17.00000000000001,
+      7.300000000000004,
+      7.400000000000002,
+      3.443605441445939,
+      5.0
+    ],
+    "feasible": true,
+    "sigma_c_MPa": 624.3034794093671
+  },
+  "active_tol": 0.0001,
+  "bound_tol": 0.0001
+}

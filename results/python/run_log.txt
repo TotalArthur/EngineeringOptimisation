@@ -1,0 +1,47 @@
+=== 1. validation ===
+quantity             target |     T=1000    err % |     T=2400    err %
+Volume (cm^3)          4147 |       3959    -4.53 |       3959    -4.53
+sigma_b (MPa)           323 |      134.6   -58.32 |      323.1     0.04
+sigma_c (MPa)           532 |      343.5   -35.43 |      532.2     0.03
+sigma_s1 (MPa)          512 |      213.5   -58.30 |      512.4     0.08
+sigma_s2 (MPa)          454 |      189.1   -58.35 |      453.8    -0.03
+y1 (mm)              0.0179 |   0.007442   -58.42 |    0.01786    -0.22
+y2 (mm)              0.0043 |   0.001789   -58.40 |   0.004293    -0.17
+
+Sigma_c readings at T = 2400 Nm (target 532 MPa):
+  cp = E/(2 pi (one_minus_nu2)): sigma_c = 532.15 MPa  (err 0.03 %)
+  cp = E/(2 pi (one_plus_nu2)): sigma_c = 486.23 MPa  (err -8.60 %)
+
+Optimisation case: T = 2400 Nm, u = 3.2 (student ID 52104479)
+
+=== 2. multistart (100 starts per method) ===
+/usr/local/lib/python3.13/dist-packages/scipy/optimize/_differentiable_functions.py:737: UserWarning: delta_grad == 0.0. Check if the approximated function is linear. If the function is linear better results can be obtained by defining the Hessian as zero instead of using quasi-Newton approximations.
+  self.H.update(delta_x, delta_g)
+/usr/local/lib/python3.13/dist-packages/scipy/optimize/_differentiable_functions.py:385: UserWarning: delta_grad == 0.0. Check if the approximated function is linear. If the function is linear better results can be obtained by defining the Hessian as zero instead of using quasi-Newton approximations.
+  self.H.update(self.x - self.x_prev, self.g - self.g_prev)
+sqp {'n': 100, 'n_ok': 100, 'success_rate': 1.0, 'n_feasible_at_best': 100, 'n_feasible': 100, 'best': np.float64(3018.17389), 'worst': np.float64(3018.17389), 'spread': np.float64(0.0), 'mean': np.float64(3018.17389), 'std': np.float64(0.0), 'n_within_tol': 100, 'mean_iter': np.float64(9.59), 'mean_nfev': np.float64(9.66), 'mean_time': np.float64(0.01992), 'total_time': np.float64(1.991985), 'median_iter': 10.0}
+  best x: [ 3.5      7.      17.       7.3      7.4      3.44361  5.     ] f = 3018.1738895491403
+interior-point {'n': 100, 'n_ok': 100, 'success_rate': 1.0, 'n_feasible_at_best': 12, 'n_feasible': 100, 'best': np.float64(3018.175527), 'worst': np.float64(3018.39868), 'spread': np.float64(0.223153), 'mean': np.float64(3018.191625), 'std': np.float64(0.032213), 'n_within_tol': 100, 'mean_iter': np.float64(27.58), 'mean_nfev': np.float64(20.88), 'mean_time': np.float64(0.126103), 'total_time': np.float64(12.6103), 'median_iter': 28.0}
+  best x: [ 3.5      7.      17.       7.30002  7.40003  3.44361  5.     ] f = 3018.1755270414906
+sqp history length 10 re-run f 3018.1738895491403
+interior-point history length 28 re-run f 3018.1755270414906
+
+=== 3. integer teeth study ===
+z=17 {'sqp': 3018.1739, 'interior-point': 3018.1752}
+z=18 {'sqp': 3214.0598, 'interior-point': 3214.0615}
+z=19 {'sqp': 3420.3168, 'interior-point': 3420.3183}
+z=20 {'sqp': 3636.8924, 'interior-point': 3636.8938}
+z=21 {'sqp': 3863.7463, 'interior-point': 3863.7477}
+z=22 {'sqp': 4100.8465, 'interior-point': 4100.8485}
+z=23 {'sqp': 4348.1677, 'interior-point': 4348.1698}
+z=24 {'sqp': 4605.6895, 'interior-point': 4605.6952}
+z=25 {'sqp': 4873.3956, 'interior-point': 4873.3977}
+z=26 {'sqp': 5151.2725, 'interior-point': 5151.2738}
+z=27 {'sqp': 5439.309, 'interior-point': 5439.3106}
+z=28 {'sqp': 5737.4962, 'interior-point': 5737.4977}
+
+=== 4. reference case u = 3, T = 1000 Nm ===
+sqp best f = 2697.154033216616 [ 3.5  7.  17.   7.3  7.4  2.8  5. ] success 1.0
+interior-point best f = 2697.1559291532476 [ 3.5      7.      17.       7.30009  7.4      2.8      5.     ] success 1.0
+
+saved to /home/user/EngineeringOptimisation/code/python/../../results/python
