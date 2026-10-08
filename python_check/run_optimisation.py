@@ -20,7 +20,7 @@ import solvers
 from validate_speed_reducer import main as validate
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "..", "results", "python")
+RES = os.path.join(HERE, "results")
 
 SEED = 1
 N_STARTS = 100        # per method, continuous multistart

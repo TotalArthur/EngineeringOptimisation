@@ -15,7 +15,7 @@ from speed_reducer_analysis import speed_reducer_analysis
 import speed_reducer_problem as prob
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "..", "results", "python")
+RES = os.path.join(HERE, "results")
 
 # [b cm, m mm, z, l1, l2, d1, d2], f reported by Golinski (cm^3)
 GOLINSKI = {
