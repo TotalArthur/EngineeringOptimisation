@@ -180,3 +180,31 @@ Effect of the larger torque and ratio: going from (T = 1000, u = 3) to (T = 2400
 11. **Multistart is evidence, not proof,** of global optimality (non-convex problem). Only z fixed integer values 17 to 28 and continuous z were studied.
 12. **Unexecuted MATLAB.** `run_optimisation.m`, `solve_speed_reducer.m`, `postprocess_design.m`, `make_figures.m` and `test_speed_reducer.m` were written carefully but not run. Expect to fix small syntax issues on first run, and expect interior-point results from `fmincon` to differ slightly from trust-constr.
 13. Golinski's own f values could not be reproduced from the brief's formula (section 5).
+
+## 7. Notes for the report, mapped to the assignment brief (EG503X/Y Assignment 1)
+
+The brief marks four things: formulation (20 %), coding (30 %), solution and analysis (30 %), presentation (20 %). The report is capped at 10 pages including everything except the title page, with numbered equations and defined variables with units. This section lists what the results already cover and what still needs writing up. The realism comments are my engineering judgement, not outputs of the code.
+
+### Task 1, formulation: points to state in the report
+
+* Objective: total material volume of two gears plus two shafts. Design variables: b, m, z, l1, l2, d1, d2 (units in section 2.1). Constraints: 11 inequalities (gear bending and contact stress, two shaft stresses, two deflections, two minimum shaft lengths, two b/m limits, overall size) plus 7 bounds. Parameters: T, u, q, kv, E, nu and the four limits.
+* Simplifications and reformulations to mention: z treated as continuous first and integer afterwards; gear 2 has u z teeth, which is not an integer in general (54.4 teeth here); variables and objective scaled to [0, 1] and 1000 cm^3 for conditioning; the four linear geometric constraints normalised by a constant to stay linear; complex step gradients instead of finite differences; no safety factors, one load case, constant q, kv, E and nu; cp taken with 1 - nu^2 (section 1.2).
+
+### Task 2, coding: what is covered
+
+Parameters, analysis, objective and constraints are separate files, nothing is hard coded elsewhere, there are no globals, and inputs are checked. Validation is in section 1, including the two unresolved discrepancies (T typo, volume 4.5 % off), which the report should state openly rather than hide. Unit tests cover the validation values and edge cases. The MATLAB solver scripts still need one run in MATLAB (README).
+
+### Task 3, solution: points to state in the report
+
+The brief asks for two methods, a comparison with the literature, convexity, active constraints, bound status and realism of the optimum.
+
+* **Two methods and literature:** sections 2 to 5. The brief says "input parameters from the literature", while the problem sheet fixes T and u from the student ID. The report should say the main case uses the sheet's ID-based values and that the u = 3, T = 1000 Nm reference case is the closer analogue of Golinski's setting. Even that case uses different limits and bounds from his, so only trends are compared.
+* **Convex or not, active constraints:** sections 2.2 to 2.4.
+* **Variables at limits:** m, z, l1 and d2 sit at their lower bounds, and b, l2 and d1 are fixed by active constraints (b/m = 5, 1.1 d2 + 1.9, shaft 1 stress). So no variable is truly free. The solution is determined by bounds and constraints, which is why every start finds it. The largest bound multipliers (scaled) are for z (2.097) and m (0.7213), so relaxing those two bounds would pay off most. This is a statement about the sheet's bounds, not a general design rule.
+* **Are the values realistic (judgement):**
+  * z = 17 is the usual minimum pinion tooth count for a 20 degree full depth gear before undercutting, so it is realistic but right at the practical limit.
+  * m = 7 mm is a standard (second choice) module, but it sits on the lower bound.
+  * The 54.4 teeth on gear 2 (u z = 3.2 x 17) cannot be built. Real gears would need an integer pair such as 17 and 54 or 55, which changes the ratio slightly (3.176 or 3.235).
+  * Shaft 1 runs at its full 550 MPa allowable with no safety factor, and b/m = 5 is the sheet's minimum rather than a design preference.
+  * Volume is the only objective. Cost, fatigue, bearings, housing and manufacturability are not modelled.
+* **What this says about the problem and practical value:** it is a small, bound dominated, vertex-type problem. Gradient methods solve it easily and reliably, and the real value of the result is in the active set and multipliers (which limits drive the design), more than in the single volume figure.
