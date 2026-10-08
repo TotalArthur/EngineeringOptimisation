@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 from scipy.io import loadmat
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "..", "results", "python")
-FIG = os.path.join(HERE, "..", "..", "figures", "python")
+RES = os.path.join(HERE, "results")
+FIG = os.path.join(HERE, "figures")
 os.makedirs(FIG, exist_ok=True)
 
 C = {"sqp": "#1f5fa8", "interior-point": "#d9731a"}

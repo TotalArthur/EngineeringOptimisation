@@ -3,7 +3,7 @@
 Author: AWD Labs
 Student ID: 52104479 (n = 9, m = 7), so T = 2400 Nm and u = 3.2
 
-**Provenance.** All numbers below come from the Python port in `code/python` (SciPy SLSQP as the SQP method and SciPy trust-constr as the interior-point method), which was actually executed. MATLAB `fmincon` was not available, so the MATLAB files in `code/matlab` are unexecuted for the solver parts (see README). Octave did run the MATLAB analysis, constraint and validation code and matched Python exactly. Times are for the machine used here and are not MATLAB times.
+**Provenance.** The numbers below come from the Python cross-check in `python_check/` (SciPy SLSQP as the SQP method and SciPy trust-constr as the interior-point method, complex step gradients, very tight tolerances), which was actually executed. The MATLAB script `speed_reducer_main.m` was run end to end in Octave with `fmincon` replaced by Octave's `sqp`, and gave the same design, multipliers, Hessian eigenvalues and convexity counts, so the logic matches. The real `fmincon` has not been run, so when you run the script in MATLAB, expect the SQP numbers to agree to about 4 significant figures but check them against this summary before quoting them. Times are for the machine used here and are not MATLAB times.
 
 ## 1. Validation
 
@@ -50,7 +50,7 @@ The brief's formula is the authoritative one, so it is used. All volumes in this
 
 T = 2400 Nm, u = 3.2, q = 2.54, kv = 2.1, E = 200 GPa, nu = 0.3, limits sigma_b 650, sigma_c 800, sigma_s 550 MPa, y 0.075 mm, bounds as in the brief.
 
-Solver options (tight tolerances). SQP (SLSQP): ftol 1e-12, maxiter 1000. Interior point (trust-constr): gtol 1e-10, xtol 1e-12, barrier_tol 1e-10, maxiter 3000. Complex step gradients for both. Feasible means max normalised constraint violation <= 1e-6. A run counts as successful if the solver reports success and the result is feasible. MATLAB equivalents are listed in the README.
+Solver options (tight tolerances). Python cross-check: SQP (SLSQP) ftol 1e-12, maxiter 1000; interior point (trust-constr) gtol 1e-10, xtol 1e-12, barrier_tol 1e-10, maxiter 3000; complex step gradients for both. MATLAB script: fmincon with central finite differences, OptimalityTolerance 1e-8, ConstraintTolerance 1e-8, StepTolerance 1e-10, MaxIterations 1000. Feasible means max normalised constraint violation <= 1e-6. A run counts as successful if the solver reports success and the result is feasible.
 
 ### 2.1 Best design
 
@@ -83,7 +83,7 @@ The interior-point result sits about 1e-5 inside the feasible region, as expecte
 | b/m upper limit (12) | 5.000 | 12 | 58.33 % | inactive | 0 |
 | Overall size m z (1+u) (cm) | 49.98 | 160 | 68.76 % | inactive | 0 |
 
-*Multipliers are for the scaled problem (variables in [0,1], objective divided by 1000 cm^3, constraints normalised), so only their sign and relative size are meaningful. In the Python port they are computed from the KKT conditions by non-negative least squares on the active set, not read from the solver. The MATLAB post processing uses the `fmincon` multipliers directly. The interior-point design gives the same active set and multipliers to 5 digits. Margin for the b/m row is quoted against the actual b/m ratio, and likewise the length rows against l1 and l2.
+*Multipliers are for the scaled problem (variables in [0,1], objective divided by 1000 cm^3, constraints normalised), so only their sign and relative size are meaningful. In the Python cross-check they are computed from the KKT conditions by non-negative least squares on the active set, not read from the solver. The MATLAB script prints the `fmincon` multipliers directly. The interior-point design gives the same active set and multipliers to 5 digits. Margin for the b/m row is quoted against the actual b/m ratio, and likewise the length rows against l1 and l2.
 
 Bound multipliers (scaled): m 0.7213, z 2.097, l1 0.01403, d2 0.2939, all positive.
 
@@ -173,12 +173,12 @@ Effect of the larger torque and ratio: going from (T = 1000, u = 3) to (T = 2400
 4. **z squared in the contact stress.** The PDF text extraction was ambiguous, but the page image shows z^2 in the denominator and that matches the target.
 5. **Units of b/m.** Taken as dimensionless with b and m in the same unit (b = 3.5 cm and m = 7 mm gives exactly 5, matching the validation case sitting on the limit). Overall size m z (1+u) <= 160 uses cm.
 6. **Constraint normalisation.** Stress, deflection and overall size rows are value/limit - 1. The four linear geometric rows use a constant reference (smallest allowed length or width) instead of dividing by a variable, so they stay linear and convex. This slightly departs from "g/g_max - 1" for those four rows only.
-7. **Python is not MATLAB.** SLSQP and trust-constr stand in for `fmincon` sqp and interior-point. Multipliers in the Python port come from a KKT least squares on the active set. Random starts differ between languages.
+7. **Python is not MATLAB.** SLSQP and trust-constr stand in for `fmincon` sqp and interior-point in the numbers above. Multipliers in the Python cross-check come from a KKT least squares on the active set, while the MATLAB script prints the `fmincon` multipliers directly. Random starts differ between languages, and the MATLAB script uses finite difference gradients with looser tolerances (1e-8), so its tiny objective spreads (around 1e-5 cm^3 for SQP) will differ from the Python values quoted here.
 8. **Active tolerance.** A constraint is called active when its relative physical margin is below 1e-4 and a variable is at a bound when within 1e-4 of its range. This is looser than the solver tolerance because the interior-point result stops about 1e-5 inside the feasible set.
 9. **Convexity test** is sampling based (5000 segments, seed 2, midpoint test, relative tolerance 1e-9). It can show non-convexity but cannot prove convexity.
 10. **Shaft 2 stress margin is only 0.84 %**, so it is nearly active. A small change in loading could make it active.
 11. **Multistart is evidence, not proof,** of global optimality (non-convex problem). Only z fixed integer values 17 to 28 and continuous z were studied.
-12. **Unexecuted MATLAB.** `run_optimisation.m`, `solve_speed_reducer.m`, `postprocess_design.m`, `make_figures.m` and `test_speed_reducer.m` were written carefully but not run. Expect to fix small syntax issues on first run, and expect interior-point results from `fmincon` to differ slightly from trust-constr.
+12. **Real `fmincon` not run.** `speed_reducer_main.m` was tested end to end in Octave with a stand-in solver, but the real `fmincon` calls were not executed. Expect interior-point results from `fmincon` to differ slightly from trust-constr. Bound multipliers printed by the MATLAB script are in unscaled units (per cm, per mm), so they differ from the scaled values quoted in section 2.2. Only the constraint multipliers are directly comparable.
 13. Golinski's own f values could not be reproduced from the brief's formula (section 5).
 
 ## 7. Notes for the report, mapped to the assignment brief (EG503X/Y Assignment 1)
@@ -192,7 +192,7 @@ The brief marks four things: formulation (20 %), coding (30 %), solution and ana
 
 ### Task 2, coding: what is covered
 
-Parameters, analysis, objective and constraints are separate files, nothing is hard coded elsewhere, there are no globals, and inputs are checked. Validation is in section 1, including the two unresolved discrepancies (T typo, volume 4.5 % off), which the report should state openly rather than hide. Unit tests cover the validation values and edge cases. The MATLAB solver scripts still need one run in MATLAB (README).
+The whole MATLAB solution is one file, `speed_reducer_main.m`, with the parameters in section 0, the analysis, objective and constraint functions at the bottom, and nothing hard coded elsewhere. Inputs are checked in `analysis`. Validation is section 1 of the script and in section 1 above, including the two unresolved discrepancies (T typo, volume 4.5 % off), which the report should state openly rather than hide. The real `fmincon` still needs one run in MATLAB (README).
 
 ### Task 3, solution: points to state in the report
 

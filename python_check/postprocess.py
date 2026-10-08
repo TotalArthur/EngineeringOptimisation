@@ -19,7 +19,7 @@ import speed_reducer_problem as prob
 import solvers
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "..", "results", "python")
+RES = os.path.join(HERE, "results")
 ACTIVE_TOL = 1e-4      # relative physical margin below this counts as active
 BOUND_TOL = 1e-4       # distance (fraction of range) counted as "at bound"
 # (interior-point stops about 1e-5 inside the feasible set, so 1e-4 is used for both methods)

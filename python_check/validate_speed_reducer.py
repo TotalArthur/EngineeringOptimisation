@@ -13,7 +13,7 @@ from speed_reducer_params import speed_reducer_params
 from speed_reducer_analysis import speed_reducer_analysis
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "..", "results", "python")
+RES = os.path.join(HERE, "results")
 
 X_VAL = np.array([3.5, 7.0, 22.0, 7.4, 7.8, 3.5, 5.2])  # b m z l1 l2 d1 d2
 TARGETS = [("Volume (cm^3)", 4147.0), ("sigma_b (MPa)", 323.0), ("sigma_c (MPa)", 532.0),
