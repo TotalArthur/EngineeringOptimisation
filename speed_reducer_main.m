@@ -203,8 +203,9 @@ end
 [Vint, iBest] = min(Vz(:, 1));
 Vcont = best{1}.f;
 fprintf('\nBest integer design: z = %d, V = %.3f cm^3\n', zList(iBest), Vint);
-fprintf('Volume penalty of rounding vs continuous optimum: %.3f cm^3 (%.3f %%)\n\n', ...
-    Vint - Vcont, 100*(Vint - Vcont)/Vcont);
+pen = Vint - Vcont;
+if abs(pen) < 1e-6*Vcont, pen = 0; end       % solver noise, not a real penalty
+fprintf('Volume penalty of rounding vs continuous optimum: %.3f cm^3 (%.3f %%)\n\n', pen, 100*pen/Vcont);
 
 fid = fopen(fullfile(resDir, 'integer_z.csv'), 'w');
 fprintf(fid, 'z,V_sqp_cm3,V_interior_point_cm3\n');
@@ -225,12 +226,16 @@ for k = 1:2
     b = best{k};
     x = b.x;
     [val, lim, unit] = physical_constraints(x, p);
-    margin = 100*(lim - val)./abs(lim);          % % of limit still available
+    margin = 100*(lim - val)./abs(lim);          % % of rhs still available
+    margin(abs(margin) < 5e-4) = 0;              % removes -0.000 from solver round-off
     isActive = (lim - val)./abs(lim) < activeTol;
     margins(:, k) = margin;
 
     fprintf('\n--- %s: V = %.4f cm^3 ---\n', methods{k}, b.f);
-    fprintf('%-26s %10s %10s %5s %9s %-9s %10s\n', 'constraint', 'value', 'limit', 'unit', 'margin %', 'status', 'multiplier');
+    fprintf('Each row is lhs <= rhs and the margin is a %% of the rhs. For stresses, deflections, size and\n');
+    fprintf('b/m upper: lhs = actual value, rhs = limit. For the min length rows: lhs = required 1.5 d + 1.9\n');
+    fprintf('(or 1.1 d + 1.9), rhs = actual l. For b/m lower: lhs = 5, rhs = actual b/m.\n');
+    fprintf('%-26s %10s %10s %5s %9s %-9s %10s\n', 'constraint', 'lhs', 'rhs', 'unit', 'margin %', 'status', 'multiplier');
     for i = 1:11
         if isActive(i), st = 'ACTIVE'; else, st = 'inactive'; end
         fprintf('%-26s %10.5g %10.5g %5s %9.3f %-9s %10.4g\n', conNames{i}, val(i), lim(i), unit{i}, ...
@@ -279,7 +284,7 @@ for k = 1:2
     end
 
     fid = fopen(fullfile(resDir, ['constraints_' strrep(methods{k}, '-', '_') '.csv']), 'w');
-    fprintf(fid, 'constraint,value,limit,unit,margin_pct,active,multiplier\n');
+    fprintf(fid, 'constraint,lhs,rhs,unit,margin_pct,active,multiplier\n');
     for i = 1:11
         fprintf(fid, '%s,%.6g,%.6g,%s,%.4f,%d,%.6g\n', conNames{i}, val(i), lim(i), unit{i}, margin(i), isActive(i), b.lamC(i));
     end
@@ -349,8 +354,10 @@ for i = 1:2
 end
 fprintf('%-28s %12s %12.2f   (u = 3, T = 1000 Nm, course limits)\n', 'This work, reference case', '-', bestRef{1}.f);
 fprintf('%-28s %12s %12.2f   (u = %g, T = %g Nm)\n', 'This work, course case', '-', best{1}.f, p.u, p.T);
-fprintf('Golinski used different loads, limits and bounds, so compare trends only\n');
-fprintf('(small z, small module, which constraints are active, variables at bounds).\n\n');
+fprintf('The volume depends only on the geometry and u, not on loads, stress limits or bounds, so the gap in f\n');
+fprintf('at the same design comes from the literature objective or the transcribed values (the classical Golinski\n');
+fprintf('polynomial gives about 2672 and 3050 cm^3 for these two designs, in line with this model).\n');
+fprintf('Compare trends only: small z, small module, which constraints are active, variables at bounds.\n\n');
 
 %% 7. FIGURES
 if makeFigures
@@ -386,6 +393,7 @@ if makeFigures
     f2 = figure('Position', [100 100 800 340]);
     subplot(1, 2, 1); hold on; box on; grid on;
     fS = [runs{1}.f] - fbest;  fI = [runs{2}.f] - fbest;
+    fS(~[runs{1}.ok]) = NaN;   fI(~[runs{2}.ok]) = NaN;   % show converged, feasible runs only
     plot(1:nStarts, fS, 'o', 'Color', blue, 'MarkerSize', 4);
     plot(1:nStarts, fI, 's', 'Color', orange, 'MarkerSize', 4);
     xlabel('Start number'); ylabel('Final volume above best (cm^3)'); title('(a) Final objective per start');
@@ -393,7 +401,10 @@ if makeFigures
     subplot(1, 2, 2); hold on; box on; grid on;
     edges = linspace(min([fS fI]), max([fS fI]) + 1e-12, 21);
     cS = histc(fS, edges);  cI = histc(fI, edges);
-    bar(edges, [cS(:) cI(:)], 'grouped');
+    ctr = edges(1:end-1) + diff(edges)/2;                  % bin centres
+    hb = bar(ctr, [cS(1:end-1); cI(1:end-1)].', 'grouped');
+    set(hb(1), 'FaceColor', blue);  set(hb(2), 'FaceColor', orange);
+    legend('SQP', 'Interior point', 'Location', 'northeast');
     xlabel('Final volume above best (cm^3)'); ylabel('Number of starts'); title('(b) Spread of final values');
     save_fig(f2, figDir, 'fig2_multistart');
 
@@ -489,7 +500,7 @@ ceq = [];
 end
 
 function [val, lim, unit] = physical_constraints(x, p)
-% The same 11 constraints in their original physical form (value <= limit),
+% The same 11 constraints in their original physical form (lhs <= rhs),
 % used for the tables and for the sanity check.
 r = analysis(x, p);
 val = [r.sigb/1e6; r.sigc/1e6; r.sigs(1)/1e6; r.sigs(2)/1e6; r.y(1)/p.mm; r.y(2)/p.mm; ...

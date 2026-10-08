@@ -178,7 +178,7 @@ Effect of the larger torque and ratio: going from (T = 1000, u = 3) to (T = 2400
 9. **Convexity test** is sampling based (5000 segments, seed 2, midpoint test, relative tolerance 1e-9). It can show non-convexity but cannot prove convexity.
 10. **Shaft 2 stress margin is only 0.84 %**, so it is nearly active. A small change in loading could make it active.
 11. **Multistart is evidence, not proof,** of global optimality (non-convex problem). Only z fixed integer values 17 to 28 and continuous z were studied.
-12. **Real `fmincon` not run.** `speed_reducer_main.m` was tested end to end in Octave with a stand-in solver, but the real `fmincon` calls were not executed. Expect interior-point results from `fmincon` to differ slightly from trust-constr. Bound multipliers printed by the MATLAB script are in unscaled units (per cm, per mm), so they differ from the scaled values quoted in section 2.2. Only the constraint multipliers are directly comparable.
+12. **Real `fmincon` not run.** `speed_reducer_main.m` was tested end to end in Octave with a stand-in solver and independently reviewed (three review lenses, each finding adversarially checked), but the real `fmincon` calls were not executed. Expect interior-point results from `fmincon` to differ slightly from trust-constr. Bound multipliers printed by the MATLAB script are in unscaled units (per cm, per mm), so they differ from the scaled values quoted in section 2.2. Only the constraint multipliers are directly comparable.
 13. Golinski's own f values could not be reproduced from the brief's formula (section 5).
 
 ## 7. Notes for the report, mapped to the assignment brief (EG503X/Y Assignment 1)
